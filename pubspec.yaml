@@ -1,0 +1,36 @@
+name: chat_bot_project
+description: "A new Flutter project."
+
+# Evitar publicación en pub.dev
+publish_to: 'none'
+
+# Versión del proyecto
+version: 1.0.0+1
+
+# Versión del entorno de SDK
+environment:
+  sdk: ">=2.19.0 <4.0.0"
+
+# Dependencias del proyecto
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_tts: ^3.5.2
+  speech_to_text: ^7.0.0
+  cupertino_icons: ^1.0.8
+  shared_preferences: ^2.0.15
+  
+
+# Dependencias para desarrollo y pruebas
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+# Configuración para Flutter
+flutter:
+  uses-material-design: true
+
+  # Archivos de recursos o assets del proyecto
+  assets:
+    - assets/images/Logo.png
