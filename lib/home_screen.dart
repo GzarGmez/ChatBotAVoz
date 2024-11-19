@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -27,7 +29,7 @@ class HomeScreen extends StatelessWidget {
               ),
               SizedBox(height: screenHeight * 0.03), // Espacio entre elementos
               Text(
-                'Nombre de la App',
+                'CHATBOT',
                 style: TextStyle(
                   fontSize: screenWidth * 0.07, // 7% de la anchura de la pantalla
                   fontWeight: FontWeight.bold,
@@ -58,6 +60,7 @@ class HomeScreen extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   // Enlace al repositorio
+                  _launchURL('https://github.com/GzarGmez/ChatBotAVoz');
                 },
                 child: Text(
                   'Repositorio GitHub',
@@ -89,5 +92,11 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  // Función para abrir el enlace del repositorio
+  void _launchURL(String url) {
+    // Puedes usar el paquete url_launcher para abrir el enlace en el navegador
+    launch(url);
   }
 }

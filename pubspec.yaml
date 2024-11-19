@@ -1,7 +1,7 @@
 name: chat_bot_project
 description: "A new Flutter project."
 
-# Evitar publicación en pub.dev
+# Esta línea evita que se publique accidentalmente en pub.dev
 publish_to: 'none'
 
 # Versión del proyecto
@@ -19,7 +19,7 @@ dependencies:
   speech_to_text: ^7.0.0
   cupertino_icons: ^1.0.8
   shared_preferences: ^2.0.15
-  
+  url_launcher: ^6.1.10  # Aquí agregamos correctamente la dependencia
 
 # Dependencias para desarrollo y pruebas
 dev_dependencies:
