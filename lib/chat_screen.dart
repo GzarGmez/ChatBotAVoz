@@ -17,6 +17,9 @@ class _ChatScreenState extends State<ChatScreen> {
   final stt.SpeechToText _speechToText = stt.SpeechToText();
   bool _isListening = false;
 
+  // Estado de idioma de la conversación (por defecto en español)
+  String _language = 'es-ES';
+
   @override
   void initState() {
     super.initState();
@@ -64,23 +67,39 @@ class _ChatScreenState extends State<ChatScreen> {
   String _getBotResponse(String message) {
     message = message.toLowerCase();
 
-    if (message.contains('hora')) {
+    // Detectar idioma y respuesta
+    if (message.contains('hello')) {
+      _language = 'en-US';
+      _flutterTts.setLanguage('en-US');
+      return 'Hello! How can I help you?';
+    } else if (message.contains('how are you')) {
+      return 'I am a bot, I am fine!';
+    } else if (message.contains('what is software')) {
+      return 'Software is a collection of programs and applications that enable devices to perform tasks.';
+    } else if (message.contains('chiapas')) {
+      return 'Chiapas is a state in Mexico known for its cultural and natural diversity.';
+    } else if (message.contains('what is this app')) {
+      return 'This is a voice chatbot app built using Flutter.';
+    } else if (message.contains('hora')) {
       return 'La hora actual es ${TimeOfDay.now().format(context)}.';
     } else if (message.contains('día')) {
       return 'Hoy es ${DateTime.now().toLocal().toString().split(' ')[0]}.';
-    } else if (message.contains('chiapas')) {
-      return 'Chiapas es un estado de México conocido por su diversidad cultural y natural.';
     } else if (message.contains('software')) {
       return 'El software es un conjunto de programas y aplicaciones que permiten que un dispositivo realice diversas tareas.';
     } else if (message.contains('hola')) {
+      _language = 'es-ES';
+      _flutterTts.setLanguage('es-ES');
       return '¡Hola! ¿En qué puedo ayudarte?';
     } else if (message.contains('adiós')) {
       return '¡Adiós! Que tengas un buen día.';
+      } else if (message.contains('adios')) {
+      return '¡Adiós! Que tengas un buen día.';
     } else if (message.contains('quién eres')) {
       return 'Soy un chatbot creado para ayudarte con tus preguntas. ¿En qué te puedo asistir?';
-    } else if (message.contains('qué es')) {
-      return '¿Qué es lo que te gustaría saber?';
+      } else if (message.contains('quien eres')) {
+      return 'Soy un chatbot creado para ayudarte con tus preguntas. ¿En qué te puedo asistir?';
     }
+    
     return 'Lo siento, no entendí eso. ¿Puedes preguntarme otra cosa?';
   }
 
@@ -119,10 +138,10 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Row(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.android),  // Ícono de un robot
-            SizedBox(width: 8),  // Espacio entre el ícono y el texto
+            Icon(Icons.android),
+            SizedBox(width: 8),
             Text('Chat Bot'),
           ],
         ),
